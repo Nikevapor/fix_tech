@@ -66,4 +66,16 @@ class Dancer
         return $this->hands;
     }
 
+    public function allowedToDance($music)
+    {
+        if ($music->getHead() == $this->getHead() ||
+            $music->getBody() == $this->getBody() ||
+            $music->getHands() == $this->getHands() ||
+            $music->getLegs() == $this->getLegs()) {
+
+            return true;
+        }
+        else return false;
+    }
+
 }
