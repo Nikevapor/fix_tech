@@ -30,7 +30,7 @@ while(true) {
     $dance_floor->setCurrentMusic($genres[rand(0, 2)]); // случайно выбираем объект жанра из массива жанров
     echo "Текущая музыка на тацполе ". get_class($dance_floor->getCurrentMusic()). ". ";
     foreach ($dancers as $dancer) {
-        if ($dance_floor->allowedToDance($dancer)) { //проверяем способен ли танцевать под данный жанр гость
+        if ($dancer->allowedToDance($dance_floor->getCurrentMusic())) { //проверяем способен ли танцевать под данный жанр гость
             echo $dancer->getName(). " танцует". "<br>";
         }
         else {
