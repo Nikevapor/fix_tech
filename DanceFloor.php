@@ -26,16 +26,5 @@ class DanceFloor
         $this->current_music = $current_music;
     }
     
-    public function allowedToDance($dancer)
-    {
-        if ($dancer->getHead() == $this->current_music->getHead() ||
-            $dancer->getBody() == $this->current_music->getBody() ||
-            $dancer->getHands() == $this->current_music->getHands() ||
-            $dancer->getLegs() == $this->current_music->getLegs()) {
-            
-            return true;
-        }
-        else return false;
-    }
     
 }
