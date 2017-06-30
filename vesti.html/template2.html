@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="public/css/reset.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/media.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="public/js/script.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+        <div class="topnav">
+            <div class="top-logo">
+                <a href="/">
+                    <img src="public/images/logo.png" alt="">
+                </a>
+            </div>
+            <div class="menu-links">
+                <a href="#home">Главная</a>
+                <a href="#news">Я не доволен</a>
+                <a href="#contact">Войти</a>
+                <a href="#about">Регистрация</a>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#home">В мире</a>
+                <a href="#news">Политика</a>
+                <a href="#contact">Шоу-бизнес</a>
+                <a href="#about">Общество</a>
+                <a href="#about">Бизнес</a>
+                <a href="#about">Культура</a>
+                <a href="#about">Спорт</a>
+                <a href="#about">Наука</a>
+                <a href="#about">Происшествия</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+        </div>
+    </nav>
+    <section class="earth-bg">
+        <div class="box-content">
+            <h2>Управление подпиской</h2>
+            <center>
+                <p><b>Для отказа от услуги:</b></p>
+                <p>Если Вы абонент <b>Мегафон:</b></p>
+                <p> - отправьте слово <span class="hl">"СТОП <?= $app->config('unsubscribe_code'); ?>"</span> на номер <span class="hl"><?= $app->config('unsubscribe_number') ? $app->config('unsubscribe_number') : '5151'; ?></span></p>
+                <p>&nbsp;</p>
+                <p>Если Вы абонент <b>Билайн:</b>
+                <p>- отправьте слово <span class="hl">"СТОП<?= $app->config('unsubscribe_beeline'); ?>"</span> на номер <span class="hl">9731</span></p>
+                <p>&nbsp;</p>
+                <p>Если Вы абонент <b>МТС:</b>
+                <p> - отправьте <span class="hl">"СТОП <?= $app->config('unsubscribe_mts'); ?>"</span> на номер <span class="hl">772367</span></p>
+                <p>&nbsp;</p>
+                <?php if ($app->config('service_code_tele2')): ?>
+                <p>Если Вы абонент <b>Теле2:</b>
+                <p> - отправьте <span class="hl">"СТОП <?= $app->config('unsubscribe_tele2'); ?>"</span> на номер <span class="hl">4623</span></p>
+                <p>&nbsp;</p>
+                <?php endif; ?>
+            </center>
+        </div>
+
+    </section>
+    <section>
+        <h2>Получение доступа к контенту</h2>
+        <center>
+            <form class="form" action="/login" method="post">
+                <?php if (!empty($flash['msg'])) {
+	echo "<p style=\"color: red;\">{$flash['msg']}</p>";
+                } ?>
+                <p><label>Логин:</label><input name="auth[email]" type="text" /></p>
+                <p><label>Код доступа:</label><input name="auth[password]" type="password" /></p>
+                <p><label> </label><input type="submit" value="Получить контент"></p>
+                <p>Если у Вас нет кода доступа к контенту - <a href="<?=$app->config('subscribing_link') ?>">Оформить подписку (Мегафон)</a>
+                    <?php if ($app->config('service_code_5')): ?> | <a href="<?=$app->config('subscribing_link') ?>">Оформить подписку на 5 дней (Мегафон)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_beeline')): ?> | <a href="<?=$app->config('subscribing_link') ?>">Оформить подписку (Билайн)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_beeline_5')): ?> | <a href="/subscribe/beeline/buy">Оформить подписку (Билайн)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_mts')): ?> | <a href="/subscribe/mts">Оформить подписку (МТС)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_mts_5')): ?> | <a href="/subscribe/mts/buy">Оформить подписку (МТС)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_tele2')): ?> | <a href="/subscribe/tele2">Оформить подписку (Теле2)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_tele2_5')): ?> | <a href="/subscribe/tele2/buy">Оформить подписку на 5 дней(Теле2)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_web')): ?> | <a href="/subscribe-web/megafon">Оформить подписку web(Мегафон)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_5_web')): ?> | <a href="<?=$app->config('subscribing_link') ?>">Оформить покупку web(Мегафон)</a><?php endif; ?>
+                    <?php if ($app->config('service_code_asia')): ?> | <a href="subscribe/asia">Оформить подписку (Казахстан, Азербайджан)</a><?php endif; ?>
+                </p>
+            </form>
+        </center>
+
+    </section>
+</div>
+<footer>
+    <div class="footer-nav">
+        <div class="wrapper">
+            <div class="footer-link">
+                <a href="#home">В мире</a>
+                <a href="#news">Политика</a>
+                <a href="#contact">Шоу-бизнес</a>
+                <a href="#about">Общество</a>
+                <a href="#about">Бизнес</a>
+                <a href="#about">Культура</a>
+                <a href="#about">Спорт</a>
+                <a href="#about">Наука</a>
+                <a href="#about">Происшествия</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-social">
+        <div class="wrapper">
+            <div class="social-networks for-mob-only social-networks-mob">
+                <div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,yazakladki"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-description">
+        <div class="wrapper">
+            <div class="footer-description-menu">
+                <ul>
+                    <li><a href="/rules">Стоимость услугу</a></li>
+                    <li><a href="/s-management">Управление Подпиской на Контент</a></li>
+                    <li><a href="/once-rules">Правила разовой покупки доступа</a></li>
+                </ul>
+            </div>
+            <div class="footer-description-text">
+
+                Стоимость
+                доступа по подписке составляет <?= $app->config('price'); ?> рублей (включая НДС) за 1 день для
+                абонентов ПАО «МегаФон», по разовой оплате - <?= $app->config('buy_price'); ?> рублей  (включая НДС)
+                за 5 дней для абонентов ПАО «МегаФон»; Продление доступа по подписке
+                происходит автоматически. Для отказа от предоставления Подписки на
+                услугу отправьте SMS-сообщение со словом СТОП <?= $app->config('unsubscribe_code'); ?><?php if ($app->config('unsubscribe_web')) {
+                echo ", при осуществлении доступа с ПК - СТОП {$app->config('unsubscribe_web')}";
+                } ?> на номер <?= $app->config('unsubscribe_number') ? $app->config('unsubscribe_number') : '5151'; ?> для
+                абонентов ПАО «МегаФон». Cообщение бесплатно в домашнем регионе. Служба технической поддержки ООО «Информпартнер»: 8 800 333-89-81
+                (звонок бесплатный), e-mail: <a href="mailto:helpdesk@informpartner.com">helpdesk@informpartner.com</a><br/>
+                Стоимость услуги для абонентов Tele2: <?= $app->config("price_tele2") ? $app->config("price_tele2") : $app->config('price'); ?> руб. с НДС в сутки. Услуга: Доступ к подписке «<?= $app->config("site.name"); ?>».
+                Нажатием кнопки «Подтвердить» вы осуществляете заказ доступа к подписке «<?= $app->config("site.name"); ?>»,
+                подтверждаете ознакомление и согласие с <a href="/rules">«Правилами предоставления услуги»</a>.
+                Услуга оказывается ООО «Т МЕДИА», сайт <a href="http://t-media.pro">t-media.pro</a>,
+                Информация для абонентов: 8-800-555-3115 (круглосуточно, звонок бесплатный). Списание будет производиться с Вашего лицевого счета.
+                GPRS-трафик оплачивается в соответствии с Вашим тарифным планом. Для отказа от
+                предоставления Подписки на услугу отправьте SMS-сообщение (бесплатно для абонентов Tele2 в «Домашнем регионе»)
+                со словом СТОП <?= $app->config('unsubscribe_tele2'); ?> на номер <?= $app->config('unsubscribe_number_tele2') ? $app->config('unsubscribe_number_tele2') : '4623'; ?> для абонентов Tele2 либо воспользуйтесь формой управления подпиской.
+                <br/>
+                Стоимость услуги для Абонентов ПАО «ВымпелКом» (товарный знак «Билайн»):
+                «Подписка» составляет <?= $app->config("price_beeline") ? $app->config("price_beeline") : $app->config('price'); ?> руб. (с НДС) в день.
+                Продление доступа происходит автоматически, посредством подписки. Для отказа от
+                предоставления Подписки на услугу отправьте бесплатное SMS-сообщение со словом
+                СТОП<?= $app->config("unsubscribe_beeline"); ?> на номер 9731 для абонентов ПАО "ВымпелКом".
+                Служба технической поддержки ООО «Информпартнер»: 8-800-707-06-14 (звонок бесплатный), e-mail: <a href="mailto:helpdesk@informpartner.com">helpdesk@informpartner.com</a>
+                <br/>
+                Стоимость услуги составляет <?= $app->config('price_mts'); ?> рублей с НДС за 1 день для
+                абонентов ПАО "МТС". С размером стоимости услуги и порядком ее списания можно
+                ознакомиться на cайте ПАО «МТС» <a href="http://www.mts.ru">www.mts.ru</a> в разделе «Услуги по коротким номерам»,
+                введя короткий номер или идентификатор услуги в строке поиска, а также позвонив
+                по единому номеру 8-800-250-08-90. Для отказа от предоставления Подписки на Контент
+                отправьте смс-сообщение с текстом «СТОП <?= $app->config('unsubscribe_mts'); ?>» на номер «772367» (смс бесплатно в домашнем
+                регионе) или наберите ussd-команду *152*22#вызов (бесплатно).
+                Служба технической поддержки ООО «Автоматизация счетов» телефон 8-800-555-12-00  (звонок бесплатный), e-mail: <a href="mailto:help@auto-accounting.org">help@auto-accounting.org</a>.
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    (function() {
+        if (window.pluso)if (typeof window.pluso.start == "function") return;
+        if (window.ifpluso==undefined) { window.ifpluso = 1;
+            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+            s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+            var h=d[g]('body')[0];
+            h.appendChild(s);
+        }})();
+</script>
+</body>
+</html>
