@@ -1,0 +1,12 @@
+<div class="login">
+		<span style="display:inline-block; font-size:14px; font-weight:bold; margin-right:10px; border:1px solid; padding:3px; -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;">18+</span> 
+<?php 
+if ($registered) {
+	echo '<a class="btn" href="/logout">Выход</a>';
+} else {
+	echo 'Используйте логин и пароль для <a class="btn" href="/login">входа на сайт</a>';
+}
+?>
+</div>	

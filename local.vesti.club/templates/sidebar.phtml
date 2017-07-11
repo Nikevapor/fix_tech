@@ -1,0 +1,24 @@
+<?php require_once '../util/sidebar_categories.php'?>
+<aside class="sidebar col-md-4 col-sm-12">
+    <div class="sidebar-container">
+        <?php foreach ($sidebar_categories as $id=>$title): ?>
+            <div class="sidebar-container-section">
+                <div class="section-title"><a href="/category/<?=$id?>"><?=$title?></a></div>
+                <?php $news_arr = file_get_contents("../util/$id.json");
+                $news_arr = json_decode($news_arr, true);
+                ?>
+                <?php for ($i = 0; $i < 4; $i++): ?>
+                    <?php if (key_exists($i, $news_arr)): ?>
+                        <div class="col-sm-6 col-md-12 news-item-side">
+                            <div class="news-item-title">
+                                <a href="/article/<?=$news_arr[$i]['id']?>"><?=$news_arr[$i]['title']?></a>
+                            </div>
+                            <div class="news-item-time"><?=get_day_name($news_arr[$i]['pubDate'])?>, <?=date('H:i', $news_arr[$i]['pubDate'])?></div>
+                        </div>
+                    <?php endif; ?>
+                <?php endfor;?>
+            </div>
+        <?php endforeach;?>
+
+    </div>
+</aside>

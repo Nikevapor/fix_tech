@@ -1,0 +1,80 @@
+# описание формата yaml: http://symfony.com/doc/current/components/yaml/yaml_format.html
+# используйте одинарные или двойные кавычки для строк со спецсимволами
+
+# для использования доступны следующие переменные:
+# $app->config('site.name') - название сайта
+# $app->config('site.path') - путь к сайту
+# $app->config('templates.path') - путь к шаблонам
+
+
+# -----------------------------------------------------------------------------------------
+
+# service code, он же service_id, выдается после регистрации сервиса в Мегафоне
+# например: ic_erotic_telochki_com_100r_5d_qu
+service_code:
+
+service_code_5:
+
+service_code_tele2:
+
+service_code_tele2_5:
+
+service_code_beeline:
+
+service_code_beeline_5:
+
+service_code_mts:
+
+service_code_mts_5:
+    
+service_code_web:
+
+# partner key - секретка для подписи со стороны партнера. участвует в формировании хеша. Любая фраза
+partner_key: pKey
+
+# Соль (Salt) для генерации хэша, она же MEGA_CLIENT_SECRET
+# генерируется при заведении сервиса на агрегаторе (информпей/информпартнер)
+# можно найти в личном кабинете в разделе "мои сервисы"
+salt: my secret pepper
+
+salt_5:
+
+salt_tele2:
+
+salt_tele2_5:
+
+salt_beeline:
+
+salt_beeline_5:
+
+salt_mts:
+
+salt_mts_5:
+
+salt_web:
+
+# номер для отписки посредством смс, после слова СТОП
+# использование: $app->config('unsubscribe_code')
+unsubscribe_code:
+
+unsubscribe_beeline:
+
+unsubscribe_number:
+
+unsubscribe_number_tele2:
+
+price:
+
+price_tele2:
+
+buy_price:
+# -----------------------------------------------------------------------------------------
+# вы можете определить любые переменные и массивы в конфиге, например:
+#
+# title: "Kekekefilms: Смотрите фильмы без регистрации!"
+# meta_keywords: [some, meta, keywords]
+# meta_description: "some meta description"
+#
+# в дальнейшем использовать их в шаблоне можно следующим образом:
+# <?= $app->config('title') ?>
+# <?= $app->config('meta_keywords') ?>

@@ -1,0 +1,52 @@
+<?php $news = file_get_contents('../util/last_news.json');
+$news = json_decode($news, true);
+
+?>
+<section class="photo-news">
+    <?php for ($i = 0; $i < 2; $i++): ?>
+        <div class="col-sm-6 photo-item">
+            <a href="/article/<?=$news[$i]['id']?>"><img src="<?=$news[$i]['img']?>" alt=""></a>
+            <div class="photo-item-content">
+                <?php if (isset($news[$i]['video'])): ?>
+                    <div class="video-link-button"><a href=""><img src="/images/play.png" alt=""></a></div>
+                <?php endif;?>
+                <div class="article-information" style="width: <?=!isset($news[$i]['video']) ? '100%' : ''?>">
+                    <div class="article-title"><a href="/article/<?=$news[$i]['id']?>"><?=$news[$i]['title']?></a></div>
+                    <div class="article-time"><?=get_day_name($news[$i]['pubDate'])?>, <?=date('H:i', $news[$i]['pubDate'])?></div>
+                </div>
+            </div>
+        </div>
+    <?php endfor; ?>
+</section>
+<section class="flash-news">
+    <div class="flash-news-container">
+        <div class="section-title">Коротко</div>
+        <?php for ($i = 2; $i < 8; $i++): ?>
+            <div class="col-md-4 col-sm-6 item">
+                <div class="news-item">
+                    <div class="news-item-title"><a href="/article/<?=$news[$i]['id']?>"><?=$news[$i]['title']?></a></div>
+                    <div class="news-item-time"><?=get_day_name($news[$i]['pubDate'])?>, <?=date('H:i', $news[$i]['pubDate'])?></div>
+                </div>
+            </div>
+        <?php endfor;?>
+    </div>
+</section>
+<section class="today-news col-md-8 col-sm-12">
+    <div class="today-news-container">
+        <div class="section-title">Другие новости</div>
+        <div class="content">
+            <?php for ($i = 8; $i < 18; $i++): ?>
+                <div class="col-sm-6 today-news-item">
+                    <div class="today-news-item-photo">
+                        <img src="<?=$news[$i]['img']?>" alt="">
+                    </div>
+                    <div class="today-news-item-title"><a href="/article/<?=$news[$i]['id']?>"><?=$news[$i]['title']?></a></div>
+                    <div class="today-news-item-time"><?=get_day_name($news[$i]['pubDate'])?>, <?=date('H:i', $news[$i]['pubDate'])?></div>
+                </div>
+            <?php endfor; ?>
+        </div>
+        <div class="add-more">
+            <button class="add-more-button">Показать еще</button>
+        </div>
+    </div>
+</section>

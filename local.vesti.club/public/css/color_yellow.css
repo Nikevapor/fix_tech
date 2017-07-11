@@ -1,0 +1,58 @@
+.topnav {
+    background-color: rgb(254, 185, 0);
+}
+.menu-links {
+    background-color: rgb(29, 29, 29);
+}
+.menu-link-container {
+    overflow: hidden;
+    background-color: rgb(29, 29, 29);
+}
+.show-hidden-menu {
+    background-color: rgb(254, 185, 0);
+}
+.video-link-button a {
+    background: rgb(254, 185, 0);
+}
+.section-title:before {
+    content: url("../images/square_yellow.png");
+    margin-right: 10px;
+}
+.section-title {
+    color: rgb(254, 185, 0);
+}
+.sidebar-container {
+    background-color: rgb(47, 47, 47);
+    color: white;
+}
+footer {
+    border-top: 12px solid rgb(254, 185, 0);
+}
+.footer-nav {
+    background-color: rgb(166, 31, 31);
+}
+.footer-social {
+    background-color: snow;
+}
+.footer-description {
+    background-color: snow;
+    color: rgb(131, 131, 131);
+}
+.footer-description li a {
+    color: rgb(131, 131, 131);
+}
+.footer-description-text a {
+    color: #352e29;
+}
+.login-form-wrapper h2 {
+    background-color: rgb(229, 50, 50);
+}
+.earth-bg {
+    background-image: url("../images/map.jpg");
+}
+.login-form-wrapper input[type='submit'] {
+    background-color: rgb(47, 47, 47);
+}
+.login-form-footer {
+    background: linear-gradient(to bottom, rgb(220,220,220), rgb(241,241,241));
+}

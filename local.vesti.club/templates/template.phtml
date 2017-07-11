@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/media.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="/js/script.js"></script>
+</head>
+<body>
+<?php require_once '../util/categories.php'?>
+<?php require_once '../util/functions.php' ?>
+<div class="wrapper">
+    <nav>
+        <div class="topnav">
+            <div class="top-logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="">
+                </a>
+            </div>
+            <div class="menu-links">
+                <a href="/">Главная</a>
+                <a href="/complain">Я не доволен</a>
+                <a href="/login">Войти</a>
+                <a href="#about">Регистрация</a>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <?php foreach ($categories as $key=>$category): ?>
+                    <a href="/category/<?=$key?>"><?=$category?></a>
+                <?php endforeach;?>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+        </div>
+    </nav>
+    <?php require_once $content ?>
+    <?php include_once 'sidebar.phtml' ?>
+</div>
+<footer>
+    <div class="footer-nav">
+        <div class="wrapper">
+            <div class="footer-link">
+                <?php foreach ($categories as $key=>$category): ?>
+                    <a href="/category/<?=$key?>"><?=$category?></a>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+    <div class="footer-social">
+        <div class="wrapper">
+            <div class="social-networks for-mob-only social-networks-mob">
+                <div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,yazakladki"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-description">
+        <div class="wrapper">
+            <div class="footer-description-menu">
+                <ul>
+                    <li><a href="/rules">Стоимость услугу</a></li>
+                    <li><a href="/s-management">Управление Подпиской на Контент</a></li>
+                    <li><a href="/once-rules">Правила разовой покупки доступа</a></li>
+                </ul>
+            </div>
+            <div class="footer-description-text">
+                <?php require_once '_footer_rules.phtml'?>
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    (function() {
+        if (window.pluso)if (typeof window.pluso.start == "function") return;
+        if (window.ifpluso==undefined) { window.ifpluso = 1;
+            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+            s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+            var h=d[g]('body')[0];
+            h.appendChild(s);
+        }})();
+</script>
+</body>
+</html>
